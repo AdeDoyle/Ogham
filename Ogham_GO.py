@@ -1,6 +1,6 @@
 """Takes regular text and renders it in either orthodox or scholastic Ogham"""
 
-oghamdict = {" ": " "}
+oghamdict = {" ": " ", "-": " "}
 
 aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ", "M": "ᚋ",
          "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
