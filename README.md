@@ -1,5 +1,5 @@
 # Ogham
-A Program to render text from the Latin alphabet into either orthodox or scholastic ogham.
+A Program to transliterate between the characters of the Latin alphabet and Ogham (Orthodox or Scholastic), in either direction.
 
 
 ## Files Included
