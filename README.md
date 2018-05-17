@@ -10,7 +10,7 @@ A Program to render text from the Latin alphabet into either orthodox or scholas
 
 3. Ogham.py - contains code for the GUI.
 
-4. Ogham.exe - (not included yet) executable file for using the application outside of a python IDE.
+4. Ogham.exe - executable file for using the application outside of a python IDE.
 
 ### Prerequisites
 
