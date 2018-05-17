@@ -1,7 +1,5 @@
 """Takes regular text and renders it in either orthodox or scholastic Ogham"""
 
-oghamdict = {" ": " ", "-": " "}
-
 aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ", "M": "ᚋ",
          "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
 
@@ -23,6 +21,7 @@ def findnth(string, character, n):
 
 def deanogham(string, alphabet=None):
     """Sets the available ogham characters in accordance with the type of ogham selected, orthodox as default"""
+    oghamdict = {" ": " ", "-": " "}
     if alphabet is None:
         alphabet = "orthodox"
     if alphabet != "scholastic":
@@ -85,6 +84,7 @@ def deanogham(string, alphabet=None):
     return finalstring
 
 
-# teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
-# print(deanogham(teststring))
-# print(deanogham(teststring, "scholastic"))
+teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
+print(deanogham(teststring))
+print(deanogham(teststring, "scholastic"))
+print(deanogham(teststring))
