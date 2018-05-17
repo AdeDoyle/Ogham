@@ -85,6 +85,6 @@ def deanogham(string, alphabet=None):
     return finalstring
 
 
-# teststring = "QRIMITIR RONANN MAQ COMOGANN \n QENILOCI MAQI MAQI-AINIA MUC..."
+# teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
 # print(deanogham(teststring))
 # print(deanogham(teststring, "scholastic"))
