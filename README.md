@@ -8,7 +8,7 @@ A Program to render text from the Latin alphabet into either orthodox or scholas
 
 2. Ogham_OG.py - contains the function to transliterate Ogham into Roman characters.
 
-3. Ogham.py - (not included yet) contains code for the GUI
+3. Ogham.py - contains code for the GUI.
 
 4. Ogham.exe - (not included yet) executable file for using the application outside of a python IDE.
 
