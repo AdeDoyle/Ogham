@@ -1,7 +1,9 @@
 """Takes regular text and renders it in either orthodox or scholastic Ogham"""
 
-aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ", "M": "ᚋ",
-         "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
+aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "V": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ",
+         "M": "ᚋ", "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
+
+extendedaicmi = {"K": "ᚕ"}
 
 forfeda = {"EA": "ᚕ", "OI": "ᚖ", "UI": "ᚗ", "IA": "ᚘ", "AE": "ᚙ", "P": "ᚚ"}
 
@@ -28,6 +30,7 @@ def deanogham(string, alphabet=None):
         alphabet = "orthodox"
     if alphabet == "orthodox":
         oghamdict.update(aicmi)
+        oghamdict.update(extendedaicmi)
         oghamdict.update(fada)
     elif alphabet == "scholastic":
         oghamdict.update(aicmi)
@@ -84,7 +87,7 @@ def deanogham(string, alphabet=None):
     return finalstring
 
 
-teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
-print(deanogham(teststring))
-print(deanogham(teststring, "scholastic"))
-print(deanogham(teststring))
+# teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
+# print(deanogham(teststring))
+# print(deanogham(teststring, "scholastic"))
+# print(deanogham(teststring))
