@@ -2,16 +2,16 @@
    This version especially for use reverse-transliterating the transcriptions on ogham.celt.dias.ie without losing
    metadata and diacritics present in the transcriptions."""
 
-aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "V": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ",
-         "M": "ᚋ", "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
+aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "V": "ᚃ", "S": "ᚄ", "N": "ᚅ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ", "M": "ᚋ",
+         "G": "ᚌ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
 
-extendedaicmi = {"K": "ᚕ"}
+extendedaicmi = {"K": "ᚕ", "J": "ᚆ", "GW": "ᚍ", "SW": "ᚎ", "TH": "ᚖ"}
 
 forfeda = {"EA": "ᚕ", "OI": "ᚖ", "UI": "ᚗ", "IA": "ᚘ", "AE": "ᚙ", "P": "ᚚ"}
 
 fada = {"Á": "ᚐ", "Ó": "ᚑ", "Ú": "ᚒ", "É": "ᚓ", "Í": "ᚔ"}
 
-lettercombos = ["NG", "EA", "OI", "UI", "IA", "AE"]
+lettercombos = ["NG", "EA", "OI", "UI", "IA", "AE", "GW", "SW", "TH"]
 
 removables = [",", "'", '"', "!"]
 
@@ -25,8 +25,8 @@ def findnth(string, character, n):
 
 def deanogham(string, alphabet=None):
     """Sets the available ogham characters in accordance with the type of ogham selected, orthodox as default"""
-    oghamdict = {" ": " ", "-": "-", "[": "[", "]": "]", "/": "/", ".": ".", "̣": "̣", "?": "?", "(": "(", ")": ")",
-                 "vac.": "vac.", "{": "{", "}": "}", "〚": "〚", "〛": "〛"}
+    oghamdict = {" ": " ", "-": " ", "[": "[", "]": "]", "/": "/", ".": ".", "̣": "̣", "?": "?", "(": "(", ")": ")",
+                 "vac.": "vac.", "{": "{", "}": "}", "<": "<", ">": ">", "〚": "〚", "〛": "〛"}
     if alphabet is None:
         alphabet = "orthodox"
     if alphabet != "scholastic":
@@ -44,7 +44,7 @@ def deanogham(string, alphabet=None):
     """all strings of ogham begin and end with designated markers"""
     string = ("᚛" + string[:] + "᚜")
     """Identifies a list of characters which will not be removed during the conversion to ogham"""
-    allowed = ["᚛", " ", "-", "\n", "(", "᚜"]
+    allowed = ["᚛", " ", "...", "-", "\n", "(", "᚜", "[", "]", "."]
     for let in oghamdict:
         allowed.append(oghamdict.get(let))
     for item in removables:
@@ -56,7 +56,7 @@ def deanogham(string, alphabet=None):
                 comcount = string.count(combo)
                 for i in range(comcount):
                     compos = string.find(combo)
-                    string = string[:compos] + oghamdict.get(combo) + string[compos+2:]
+                    string = string[:compos] + oghamdict.get(combo) + string[compos + len(combo):]
     """Changes characters which exist in ogham from latin alphabet to ogham"""
     for character in string:
         charpos = string.find(character)
@@ -86,11 +86,42 @@ def deanogham(string, alphabet=None):
             charpos2 = findnth(newstring2, character, charno2)
             if newstring2[charpos2 + 1] in allowed:
                 newstring2 = newstring2[:charpos2 + 1] + ")" + newstring2[charpos2 + 1:]
+    if "…" in newstring2:
+        ellipcount = newstring2.count("…")
+        for i in range(0, ellipcount):
+            ellippos = findnth(newstring2, "…", i)
+            newstring2 = newstring2[:ellippos] + "[...]" + newstring2[ellippos + 1:]
+    # if "[ ... ]" in newstring2:
+    #     ellipcount = newstring2.count("[ ... ]")
+    #     for i in range(0, ellipcount):
+    #         ellippos = findnth(newstring2, "[ ... ]", i)
+    #         newstring2 = newstring2[:ellippos] + "[...]" + newstring2[ellippos + 7:]
+    # if "..." in newstring2:
+    #     ellipcount = newstring2.count("...")
+    #     for i in range(0, ellipcount):
+    #         ellippos = findnth(newstring2, "...", i)
+    #         newstring2 = newstring2[:ellippos] + "[...]" + newstring2[ellippos + 3:]
+    # if "\n" in newstring2:
+    #     spacecount = newstring2.count("\n")
+    #     for i in range(0, spacecount):
+    #         spacepos = findnth(newstring2, "\n", i)
+    #         newstring2 = newstring2[:spacepos] + "᚜\n᚛" + newstring2[spacepos + 1:]
+    # if "[[" in newstring2:
+    #     doubcount = newstring2.count("[[")
+    #     for i in range(0, doubcount):
+    #         doubpos = findnth(newstring2, "[[", i)
+    #         newstring2 = newstring2[:doubpos] + "[" + newstring2[doubpos + 2:]
+    # if "]]" in newstring2:
+    #     doubcount = newstring2.count("]]")
+    #     for i in range(0, doubcount):
+    #         doubpos = findnth(newstring2, "]]", i)
+    #         newstring2 = newstring2[:doubpos] + "]" + newstring2[doubpos + 2:]
     finalstring = newstring2
     return finalstring
 
 
-# teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQI MAQI-AINIA MUC..."
+# teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQIMAQI-AINIA MUC..."
+# teststring = "[ ... ] MAQI MAQỊ/[ ... ]ỌG̣GODIK[A]"
 # print(deanogham(teststring))
 # print(deanogham(teststring, "scholastic"))
 # print(deanogham(teststring))
