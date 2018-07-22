@@ -17,7 +17,7 @@ class Application(Frame):
 
     def create_widgets(self):
         """Creates Widgets for Buttons and Text Input and Output"""
-        self.instruction = Label(self, text = "Enter Text Here:")
+        self.instruction = Label(self, text="Enter Text Here:")
         self.instruction.grid(row=0, column=0, columnspan=2, sticky=W)
 
         self.intext = Text(self, width=149, height=15, wrap=WORD)
