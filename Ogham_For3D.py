@@ -39,7 +39,7 @@ class Application(Frame):
         """Display output text in Orthodox Ogham."""
         content = self.intext.get(1.0, END)
         output = deanogham(content)
-        output = output[:-2]+output[-1:]
+        output = output[:-3]
         self.outtext.delete(1.0, END)
         self.outtext.insert(0.0, output)
 
@@ -47,7 +47,7 @@ class Application(Frame):
         """Display output text in Scholastic Ogham."""
         content = self.intext.get(1.0, END)
         output = deanogham(content, "scholastic")
-        output = output[:-2] + output[-1:]
+        output = output[:-3]
         self.outtext.delete(1.0, END)
         self.outtext.insert(0.0, output)
 

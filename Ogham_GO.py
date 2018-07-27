@@ -1,17 +1,17 @@
 """Takes regular text and renders it in either orthodox or scholastic Ogham"""
 
-aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "V": "ᚃ", "S": "ᚄ", "N": "ᚅ", "H": "ᚆ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ",
-         "M": "ᚋ", "G": "ᚌ", "NG": "ᚍ", "Z": "ᚎ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
+aicmi = {"B": "ᚁ", "L": "ᚂ", "F": "ᚃ", "V": "ᚃ", "S": "ᚄ", "N": "ᚅ", "D": "ᚇ", "T": "ᚈ", "C": "ᚉ", "Q": "ᚊ", "M": "ᚋ",
+         "G": "ᚌ", "R": "ᚏ", "A": "ᚐ", "O": "ᚑ", "U": "ᚒ", "E": "ᚓ", "I": "ᚔ"}
 
-extendedaicmi = {"K": "ᚕ"}
+extendedaicmi = {"K": "ᚕ", "J": "ᚆ", "GW": "ᚍ", "SW": "ᚎ", "TH": "ᚖ"}
 
-forfeda = {"EA": "ᚕ", "OI": "ᚖ", "UI": "ᚗ", "IA": "ᚘ", "AE": "ᚙ", "P": "ᚚ"}
+forfeda = {"EA": "ᚕ", "OI": "ᚖ", "UI": "ᚗ", "IA": "ᚘ", "AE": "ᚙ", "P": "ᚚ", "H": "ᚆ", "NG": "ᚍ", "Z": "ᚎ"}
 
 fada = {"Á": "ᚐ", "Ó": "ᚑ", "Ú": "ᚒ", "É": "ᚓ", "Í": "ᚔ"}
 
-lettercombos = ["NG", "EA", "OI", "UI", "IA", "AE"]
+lettercombos = ["NG", "EA", "OI", "UI", "IA", "AE", "GW", "SW", "TH"]
 
-removables = [".", ",", "'", '"', "!", "?", "(", ")"]
+removables = [",", "'", '"', "!"]
 
 
 def findnth(string, character, n):
