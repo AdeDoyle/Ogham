@@ -119,6 +119,5 @@ def deanogham(string, alphabet=None):
 # teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQIMAQI-AINIA MUC..."
 # teststring = "[...] ... MAQI MAQỊ/[ ... ]ỌG̣GODIK[A]"
 # teststring = "CUṆẠMAQQ̣I/ AVIvac. CỌRBBI"
-# teststring = "FVUI"
 # print(deanogham(teststring))
 # print(deanogham(teststring, "scholastic"))
