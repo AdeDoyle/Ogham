@@ -98,6 +98,12 @@ def deanogham(string, alphabet=None):
     if "\n" in newstring2:
         splitstring = newstring2.split("\n")
         newstring2 = "᚜\n᚛".join(splitstring)
+    if "[[[" in newstring2:
+        splitstring = newstring2.split("[[[")
+        newstring2 = "[".join(splitstring)
+    if "]]]" in newstring2:
+        splitstring = newstring2.split("]]]")
+        newstring2 = "]".join(splitstring)
     if "[[" in newstring2:
         splitstring = newstring2.split("[[")
         newstring2 = "[".join(splitstring)
@@ -117,7 +123,8 @@ def deanogham(string, alphabet=None):
 
 
 # teststring = "QRIMITIR RONANN MAQ COMOGANN\nQENILOCI MAQIMAQI-AINIA MUC..."
-# teststring = "[...] ... MAQI MAQỊ/[ ... ]ỌG̣GODIK[A]"
+# teststring = "[...] … MAQI MAQỊ/[ ... ]ỌG̣GODIK[A]"
+# teststring = "MAQI LASỤGỤ BẸTẠT MẠTṬẸ[…]"
 # teststring = "CUṆẠMAQQ̣I/ AVIvac. CỌRBBI"
 # print(deanogham(teststring))
 # print(deanogham(teststring, "scholastic"))
